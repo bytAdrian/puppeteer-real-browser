@@ -1,4 +1,4 @@
-FROM node:22-bookworm-slim
+FROM node:24.14.1-bookworm-slim
 
 RUN apt-get update && apt-get install -y \
     wget \
@@ -14,8 +14,10 @@ ENV CHROME_BIN=/usr/bin/chromium
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY .npmrc package*.json ./
 
+RUN npm --version && node -e "const major = Number(process.versions.npm.split('.')[0]); if (major < 11) { throw new Error('npm >= 11 is required for min-release-age support'); }"
+RUN test "$(npm config get min-release-age)" = "90"
 RUN npm ci
 COPY . .
 
