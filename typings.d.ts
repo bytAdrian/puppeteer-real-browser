@@ -1,4 +1,4 @@
-declare module "puppeteer-real-browser" {
+declare module "@bytadrian/puppeteer-real-browser" {
 	import type { Browser, Page } from "rebrowser-puppeteer-core";
 	import type { GhostCursor } from "ghost-cursor";
 

@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:22-bookworm-slim
 
 RUN apt-get update && apt-get install -y \
     wget \
@@ -16,8 +16,7 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm update
-RUN npm install
+RUN npm ci
 COPY . .
 
 # Command to run the application

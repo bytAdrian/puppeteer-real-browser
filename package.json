@@ -1,5 +1,5 @@
 {
-  "name": "puppeteer-real-browser",
+  "name": "@bytadrian/puppeteer-real-browser",
   "version": "1.4.1",
   "description": "This package is designed to bypass puppeteer's bot-detecting captchas such as Cloudflare. It acts like a real browser and can be managed with puppeteer.",
   "main": "lib/cjs/index.js",
@@ -13,8 +13,13 @@
   },
   "typings": "typings.d.ts",
   "scripts": {
-    "esm_test": "node ./test/esm/test.js",
-    "cjs_test": "node ./test/cjs/test.js"
+    "test": "npm run test:cjs && npm run test:esm",
+    "test:cjs": "node ./test/cjs/test.js",
+    "test:esm": "node ./test/esm/test.js",
+    "smoke:cjs": "node -e \"const { connect } = require('./lib/cjs/index.js'); if (typeof connect !== 'function') process.exit(1)\"",
+    "smoke:esm": "node -e \"import('./lib/esm/index.mjs').then(({ connect }) => { if (typeof connect !== 'function') process.exit(1) })\"",
+    "cjs_test": "npm run test:cjs",
+    "esm_test": "npm run test:esm"
   },
   "keywords": [
     "cf-bypass",
@@ -36,7 +41,10 @@
     "puppeteer-undetectable-cf-bypass"
   ],
   "author": "zfc-software",
-  "license": "ISC",
+  "maintainers": [
+    "bytAdrian"
+  ],
+  "license": "MIT",
   "dependencies": {
     "chrome-launcher": "^1.1.2",
     "ghost-cursor": "^1.3.0",
@@ -47,8 +55,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zfcsoftware/puppeteer-real-browser"
+    "url": "git+https://github.com/bytAdrian/puppeteer-real-browser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bytAdrian/puppeteer-real-browser/issues"
   },
   "readme": "README.md",
-  "homepage": "https://github.com/zfcsoftware/puppeteer-real-browser"
+  "homepage": "https://github.com/bytAdrian/puppeteer-real-browser#readme"
 }

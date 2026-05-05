@@ -1,6 +1,6 @@
 <br/>
 <p align="center">
-  <a href="https://github.com/zfcsoftware/puppeteer-real-browser">
+  <a href="https://github.com/bytAdrian/puppeteer-real-browser">
     <img src="https://github.com/zfcsoftware/puppeteer-real-browser/assets/123484092/cc8b5fb9-504a-4fd3-97f6-a51990bb4303" alt="Logo" width="80" height="80">
   </a>
 
@@ -10,7 +10,7 @@
     This package prevents Puppeteer from being detected as a bot in services like Cloudflare and allows you to pass captchas without any problems. It behaves like a real browser.
     <br/>
     <br/>
-    If you are only interested in Cloudflare WAF, please check this repo:<br/> https://github.com/zfcsoftware/cf-clearance-scraper
+    This fork is maintained at:<br/> https://github.com/bytAdrian/puppeteer-real-browser
   </p>
 </p>
 
@@ -19,11 +19,11 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/contributors/zfcsoftware/puppeteer-real-browser?color=dark-green" alt="Contributors" />
-  <img src="https://img.shields.io/github/forks/zfcsoftware/puppeteer-real-browser?style=social" alt="Forks" />
-  <img src="https://img.shields.io/github/stars/zfcsoftware/puppeteer-real-browser?style=social" alt="Stargazers" />
-  <img src="https://img.shields.io/github/issues/zfcsoftware/puppeteer-real-browser" alt="Issues" />
-  <img src="https://img.shields.io/github/license/zfcsoftware/puppeteer-real-browser" alt="License" />
+  <img src="https://img.shields.io/github/contributors/bytAdrian/puppeteer-real-browser?color=dark-green" alt="Contributors" />
+  <img src="https://img.shields.io/github/forks/bytAdrian/puppeteer-real-browser?style=social" alt="Forks" />
+  <img src="https://img.shields.io/github/stars/bytAdrian/puppeteer-real-browser?style=social" alt="Stargazers" />
+  <img src="https://img.shields.io/github/issues/bytAdrian/puppeteer-real-browser" alt="Issues" />
+  <img src="https://img.shields.io/github/license/bytAdrian/puppeteer-real-browser" alt="License" />
 </p>
 
 ## Installation
@@ -31,7 +31,7 @@
 If you are using a Linux operating system, xvfb must be installed for the library to work correctly.
 
 ```bash
-npm i puppeteer-real-browser
+npm i @bytadrian/puppeteer-real-browser
 ```
 
 if you are using linux:
@@ -45,7 +45,7 @@ sudo apt-get install xvfb
 ### CommonJS
 
 ```js
-const { connect } = require("puppeteer-real-browser");
+const { connect } = require("@bytadrian/puppeteer-real-browser");
 
 const start = async () => {
   const { page, browser } = await connect();
@@ -55,7 +55,7 @@ const start = async () => {
 ### Module
 
 ```js
-import { connect } from "puppeteer-real-browser";
+import { connect } from "@bytadrian/puppeteer-real-browser";
 
 const { page, browser } = await connect();
 ```
@@ -63,7 +63,7 @@ const { page, browser } = await connect();
 ## Usage
 
 ```js
-const { connect } = require("puppeteer-real-browser");
+const { connect } = require("@bytadrian/puppeteer-real-browser");
 
 async function test() {
   const { browser, page } = await connect({
@@ -120,7 +120,7 @@ npm i puppeteer-extra-plugin-click-and-wait
 ```js
 const test = require("node:test");
 const assert = require("node:assert");
-const { connect } = require("puppeteer-real-browser");
+const { connect } = require("@bytadrian/puppeteer-real-browser");
 
 test("Puppeteer Extra Plugin", async () => {
   const { page, browser } = await connect({
@@ -147,7 +147,7 @@ You can use the Dockerfile file in the main directory to use this library with d
 To run a test, you can follow these steps
 
 ```bash
-git clone https://github.com/zfcsoftware/puppeteer-real-browser
+git clone https://github.com/bytAdrian/puppeteer-real-browser
 ```
 
 ```bash
@@ -164,14 +164,14 @@ docker run puppeteer-real-browser-project
 
 ## Support Us
 
-This library is completely open source and is constantly being updated. Please star this repo to support this project. Starring and supporting the project will ensure that it receives updates. If you want to support it further, you can consider sponsoring me (https://github.com/sponsors/zfcsoftware)
+This library is open source and maintained as a fork of the original `zfcsoftware/puppeteer-real-browser` project. Please star this repo if it is useful to you.
 
 ## Quick Questions and Answers
 
 ### I Cannot Access Functions in Window Object What Should I Do?
 
 This problem is probably caused by the runtime being closed by the rebrowser used.
-https://github.com/zfcsoftware/puppeteer-real-browser/tree/access-window
+Original upstream branch: https://github.com/zfcsoftware/puppeteer-real-browser/tree/access-window
 I created a branch for this. You can access the value you want by adding javascript to the page source with puppeteer-intercept-and-modify-requests as done in success.js. If you know about the Chrome plugin, you can also use it.
 
 ### page.setViewport method is not working, what should I do?
@@ -182,7 +182,7 @@ As with the initialization arguments in the test module, you can set the default
 
 using puppeteer-core patched with rebrowser. Tested with the challenging sites in the test file in headless false mode and passed with flying colors. The only known issue is that the mouse screeenX does not match the mouse position. This has been patched in the library.
 
-The ghost-cursor is included in the library. (https://github.com/zfcsoftware/puppeteer-real-browser/blob/2a5fba37a85c15625fb3c8d1f7cf8dcb109b9492/lib/cjs/module/pageController.js#L54) You can use ghost-cursor with page.realCursor. page.click It is recommended to use page.realClick instead of page.click.
+The ghost-cursor is included in the library. (https://github.com/bytAdrian/puppeteer-real-browser/blob/main/lib/cjs/module/pageController.js) You can use ghost-cursor with page.realCursor. page.click It is recommended to use page.realClick instead of page.click.
 
 ### What Makes This Library Special?
 
@@ -198,7 +198,7 @@ Please see the answers in the link above. When there is no Google session, no ma
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/zfcsoftware/puppeteer-real-browser/blob/main/LICENSE.md) for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/bytAdrian/puppeteer-real-browser/blob/main/LICENSE.md) for more information.
 
 ## Thank You
 
