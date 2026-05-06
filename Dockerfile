@@ -16,7 +16,7 @@ WORKDIR /app
 
 COPY .npmrc package*.json ./
 
-RUN npm --version && node -e "const major = Number(process.versions.npm.split('.')[0]); if (major < 11) { throw new Error('npm >= 11 is required for min-release-age support'); }"
+RUN npm --version && node -e "const { execSync } = require('node:child_process'); const [major, minor] = execSync('npm --version', { encoding: 'utf8' }).trim().split('.').map(Number); const supported = Number.isFinite(major) && Number.isFinite(minor) && (major > 11 || (major === 11 && minor >= 10)); if (!supported) { throw new Error('npm >= 11.10.0 is required for min-release-age support'); }"
 RUN test "$(npm config get min-release-age)" = "90"
 RUN npm ci
 COPY . .
